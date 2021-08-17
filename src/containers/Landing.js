@@ -12,7 +12,7 @@ import image6 from "../assets/img/theme/team-4-800x800.jpg";
 import classnames from "classnames";
 
 // reactstrap components
-import { Button, Container, Row, Col } from "reactstrap";
+import { Badge, Button, Card, CardBody, Container, Row, Col } from "reactstrap";
 
 // core components
 import DemoNavbar from "../components/Navbars/DemoNavbar.js";
@@ -49,13 +49,13 @@ class Landing extends React.Component {
                   <Row>
                     <Col lg="6">
                       <h1 className="display-3 text-white">
-                        A beautiful Design System{" "}
-                        <span>completed with examples</span>
+                        Vehicle Permit{" "}
+                        <span>lisence registeration made easy</span>
                       </h1>
                       <p className="lead text-white">
-                        The design system comes with four pre-built pages to
-                        help you get started faster. You can change the text and
-                        images and you're good to go.
+                        Get your vehicle permits and driver's lisence here with
+                        the click of a button. Lisence renewal? We've got you
+                        covered.
                       </p>
                       <div className="btn-wrapper">
                         <Button
@@ -89,7 +89,7 @@ class Landing extends React.Component {
             </section>
             {/* 1st Hero Variation */}
           </div>
-          {/* <section className="section section-lg pt-lg-0 mt--200">
+          <section className="section section-lg pt-lg-0 mt--200">
             <Container>
               <Row className="justify-content-center">
                 <Col lg="12">
@@ -207,7 +207,7 @@ class Landing extends React.Component {
               </Row>
             </Container>
           </section>
-          <section className="section section-lg">
+          {/*<section className="section section-lg">
             <Container>
               <Row className="row-grid align-items-center">
                 <Col className="order-md-2" md="6">

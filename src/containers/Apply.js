@@ -16,65 +16,28 @@
 
 */
 import React from "react";
-import axios from "axios";
 
 // reactstrap components
 import {
   Button,
   Card,
-  CardHeader,
   CardBody,
-  FormGroup,
-  Form,
-  Input,
+  CardHeader,
   Container,
+  Form,
+  FormGroup,
+  Input,
   Row,
   Col,
 } from "reactstrap";
 
+import image1 from "../assets/img/theme/team-4-800x800.jpg";
+
 // core components
-import AuthNavbar from "../../components/Navbars/AuthNavbar.js";
-import AuthFooter from "../../components/Footers/AuthFooter.js";
+import DemoNavbar from "../components/Navbars/DemoNavbar.js";
+import AuthFooter from "../components/Footers/AuthFooter.js";
 
-class Register extends React.Component {
-  state = {
-    firstName: "",
-    lastName: "",
-    dob: "",
-    email: "",
-    gender: "",
-    img: "",
-    address: "",
-    city: "",
-    country: "",
-    password: "",
-    password1: "",
-    occupation: "",
-  };
-
-  onChange = (e, field) => {
-    this.setState({ [field]: e.target.value });
-  };
-
-  validate = () => {
-    return true;
-  };
-
-  register = async (e) => {
-    const { email, password } = this.state;
-    // e.preventDefault();
-    let error = this.validate();
-    if (error) this.setState({ error: false });
-    // error = await this.props.onLogIn({ ...this.state });
-    if (error) this.setState({ error: false });
-    let res = await axios.post("localhost:3000/auth/register", {
-      email,
-      password,
-    });
-    // let token = res.token.access.token
-    // let refreshToken = res.token.refresh.token
-    // authenticteUser(token, refreshToken);
-  };
+class Profile extends React.Component {
   componentDidMount() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
@@ -83,68 +46,19 @@ class Register extends React.Component {
   render() {
     return (
       <>
-        <AuthNavbar />
-        <main ref="main">
-          <section className="section section-shaped section-lg">
-            <div className="shape shape-style-1 bg-gradient-default">
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-            </div>
-            <Container className="pt-lg-7">
+        <DemoNavbar />
+        <main className="profile-page" ref="main">
+          <section className="section section-lg bg-gradient-default">
+            <Container className="pt-md pb-300">
+              <Row className="text-center justify-content-center">
+                <Col lg="10">
+                  <h2 className="display-3 text-info">Application Form</h2>
+                </Col>
+              </Row>
               <Row className="justify-content-center">
                 <Col lg="12">
                   <Card className="bg-secondary shadow border-0">
-                    <CardHeader className="bg-white pb-2">
-                      <div className="text-muted text-center mb-3">
-                        <small>Sign up with</small>
-                      </div>
-                      <div className="text-center">
-                        <Button
-                          className="btn-neutral btn-icon mr-4"
-                          color="default"
-                          href="#pablo"
-                          onClick={(e) => e.preventDefault()}
-                        >
-                          <span className="btn-inner--icon mr-1">
-                            <img
-                              alt="..."
-                              src={
-                                require("../../assets/img/icons/common/github.svg")
-                                  .default
-                              }
-                            />
-                          </span>
-                          <span className="btn-inner--text">Github</span>
-                        </Button>
-                        <Button
-                          className="btn-neutral btn-icon ml-1"
-                          color="default"
-                          href="#pablo"
-                          onClick={(e) => e.preventDefault()}
-                        >
-                          <span className="btn-inner--icon mr-1">
-                            <img
-                              alt="..."
-                              src={
-                                require("../../assets/img/icons/common/google.svg")
-                                  .default
-                              }
-                            />
-                          </span>
-                          <span className="btn-inner--text">Google</span>
-                        </Button>
-                      </div>
-                    </CardHeader>
                     <CardBody className="px-lg-5 py-lg-2">
-                      <div className="text-center text-muted mb-4">
-                        <small>Or sign up with credentials</small>
-                      </div>
                       <Form role="form">
                         <h6 className="heading-small text-muted mb-4">
                           User information
@@ -461,6 +375,22 @@ class Register extends React.Component {
                 </Col>
               </Row>
             </Container>
+            {/* SVG separator */}
+            <div className="separator separator-bottom separator-skew zindex-100">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="none"
+                version="1.1"
+                viewBox="0 0 2560 100"
+                x="0"
+                y="0"
+              >
+                <polygon
+                  className="fill-white"
+                  points="2560 0 2560 100 0 100"
+                />
+              </svg>
+            </div>
           </section>
         </main>
         <AuthFooter />
@@ -469,4 +399,4 @@ class Register extends React.Component {
   }
 }
 
-export default Register;
+export default Profile;

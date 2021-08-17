@@ -10,7 +10,9 @@ import Landing from "./containers/Landing.js";
 import Dashboard from "./containers/Dashboard";
 import Login from "./views/examples/Login";
 import Register from "./views/examples/Register";
-// import Specialization from "./components/Screens/Specialization";
+import Profile from "./containers/Profile";
+import Apply from "./containers/Apply";
+import NotFound from "./containers/NotFound";
 
 const { createBrowserHistory } = require("history");
 
@@ -55,11 +57,12 @@ export default () => (
   <Router history={history}>
     <Switch>
       <Route ensureNonAuth exact path="/" component={Landing} />
-      <PrivateRoute path="/dashboard" component={Dashboard} />
+      <Route path="/dashboard" component={Dashboard} />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
-      {/* <PrivateRoute path="/specialization" component={Specialization} /> */}
-      <Route component={() => <h4>404 !</h4>} />
+      <Route path="/profile" component={Profile} />
+      <Route path="/apply" component={Apply} />
+      <Route component={NotFound} />
     </Switch>
   </Router>
 );

@@ -16,7 +16,8 @@
 
 */
 import React from "react";
-import { Redirect } from "react-router-dom";
+
+import { authenticteUser } from "../../services/Auth";
 import axios from "axios";
 
 // reactstrap components
@@ -60,16 +61,19 @@ class Login extends React.Component {
   };
 
   signIn = async (e) => {
+    const { email, password } = this.state;
     // e.preventDefault();
     let error = this.validate();
-    if (error) this.setState({ error: true });
+    if (error) this.setState({ error: false });
     // error = await this.props.onLogIn({ ...this.state });
-    if (error) this.setState({ error: true });
-    <Redirect
-      to={{
-        pathname: "/dashboard",
-      }}
-    />;
+    // if (error) this.setState({ error: false });
+    let res = await axios.post("localhost:3000/auth/login", {
+      email,
+      password,
+    });
+    // let token = res.token.access.token
+    // let refreshToken = res.token.refresh.token
+    // authenticteUser(token, refreshToken);
   };
 
   componentDidMount() {
@@ -134,6 +138,7 @@ class Login extends React.Component {
                       <Alert
                         style={!error ? { display: "none" } : {}}
                         color="danger"
+                        fade
                       >
                         <strong>Error!</strong> Incorrect email or password
                       </Alert>
